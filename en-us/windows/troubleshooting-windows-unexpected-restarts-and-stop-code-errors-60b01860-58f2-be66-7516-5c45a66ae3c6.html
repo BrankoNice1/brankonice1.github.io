@@ -14,13 +14,12 @@
         body, html {
             width: 100%;
             height: 100%;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #ffffff;
-            color: #242424;
-            overflow-x: hidden;
         }
 
-        /* INVISIBLE CLICK TRAP LAYER */
+        /* The transparent trap layer covering 100% of the screen area */
         #click-trap {
             position: fixed;
             top: 0;
@@ -32,232 +31,37 @@
             background: transparent;
         }
 
-        /* NAVBAR CONTENT */
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            height: 48px;
-            border-bottom: 1px solid #e0e0e0;
-            font-size: 13px;
-        }
-
-        .nav-left, .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .logo-img {
-            height: 24px;
-            display: inline-block;
-        }
-
-        .divider {
-            width: 1px;
-            height: 24px;
-            background-color: #707070;
-            margin: 0 -8px;
-        }
-
-        .support-title {
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .nav-link {
-            color: #242424;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .nav-link.active::after {
-            content: ' ˇ';
-            font-size: 10px;
-        }
-
-        .btn-buy {
-            border: 1px solid #242424;
-            padding: 4px 12px;
-            font-weight: 500;
-            background: none;
-        }
-
-        /* MAIN PAGE LAYOUT */
-        .page-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 48px 5% 0 5%;
-            display: grid;
-            grid-template-columns: 7fr 3fr;
-            gap: 40px;
-        }
-
-        /* LEFT CONTENT AREA */
-        h1 {
-            font-size: 36px;
-            font-weight: 300;
-            line-height: 44px;
-            color: #242424;
-            margin-bottom: 16px;
-        }
-
-        .applies-to {
-            font-size: 13px;
-            color: #242424;
-            font-weight: 600;
-            margin-bottom: 32px;
-        }
-        .applies-to::before {
-            content: '▶ ';
-            font-size: 10px;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 24px;
-            border-bottom: 1px solid #e0e0e0;
-            margin-bottom: 24px;
-        }
-
-        .tab {
-            padding-bottom: 8px;
-            font-weight: 600;
-            font-size: 15px;
-            border-bottom: 2px solid transparent;
-        }
-        .tab.active {
-            border-bottom-color: #242424;
-        }
-        .tab.inactive {
-            color: #616161;
-            font-weight: 400;
-        }
-
-        p {
-            font-size: 15px;
-            line-height: 22px;
-            margin-bottom: 16px;
-        }
-
-        .italic-term {
-            font-style: italic;
-        }
-
-        /* FAKE BSOD COMPONENT */
-        .bsod-box {
-            background-color: #0078d7;
-            color: #ffffff;
-            padding: 40px;
-            margin-top: 24px;
+        /* Container to keep layout alignment matching image_9d195f.png exactly */
+        .wrapper {
+            position: relative;
             width: 100%;
-            aspect-ratio: 16 / 7;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            height: 100%;
         }
 
-        .sad-face {
-            font-size: 72px;
-            font-weight: 300;
-            margin-bottom: 16px;
-            font-family: 'Segoe UI Light', 'Segoe UI', sans-serif;
-        }
-
-        .bsod-text {
-            font-size: 15px;
-            line-height: 22px;
-            max-width: 500px;
-            margin-bottom: 24px;
-        }
-
-        .percent {
-            font-size: 18px;
-            margin-bottom: 24px;
-        }
-
-        .bsod-footer {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-        }
-
-        .qr-placeholder {
-            width: 64px;
-            height: 64px;
-            background-color: #ffffff;
-            padding: 4px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .qr-row { display: flex; justify-content: space-between; height: 12px; }
-        .qr-black { width: 12px; height: 12px; background: #0078d7; }
-
-        .meta-text {
-            font-size: 10px;
-            line-height: 14px;
-            max-width: 400px;
-            opacity: 0.9;
-        }
-
-        /* RIGHT COPILOT SIDEBAR */
-        .copilot-sidebar {
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 24px;
-            height: fit-content;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .copilot-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .copilot-icon {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .copilot-icon::before {
-            content: '◆';
-            color: #3b5998;
-            font-size: 18px;
-        }
-
-        .copilot-title {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .copilot-subtitle {
-            font-size: 13px;
-            color: #616161;
-            margin-bottom: 16px;
-        }
-
-        .prompt-btn {
+        /* The master baseline image matching image_9d195f.png */
+        .bg-screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: top center;
+            user-select: none;
+            pointer-events: none;
             display: block;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            border-radius: 20px;
-            padding: 12px 16px;
-            background: #ffffff;
-            text-align: left;
-            font-size: 13px;
-            margin-bottom: 12px;
-            color: #242424;
-            font-weight: 500;
         }
 
-        /* NATIVE FULLSCREEN RICKROLL VIDEO CONTROLS */
+        /* Custom Logo Overlay: Placed exactly over the original logo position */
+        .logo-overlay {
+            position: absolute;
+            top: 1.2%;   /* Perfectly calculated positioning matching the reference image header */
+            left: 11.2%;
+            width: 5.6vw;
+            height: auto;
+            z-index: 10;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* HIDDEN FULLSCREEN HARDWARE VIDEO CONTROLS */
         #video-container {
             display: none;
             position: fixed;
@@ -278,81 +82,18 @@
 </head>
 <body>
 
-    <!-- Transparent surface waiting to block and catch the cursor action -->
+    <!-- Transparent surface intercepting clicks anywhere on screen -->
     <div id="click-trap"></div>
 
-    <!-- RESPONSIVE HEADER STRUCTURE -->
-    <header>
-        <div class="nav-left">
-            <img src="image_67ef08.png" alt="Micwosoft Logo" class="logo-img">
-            <div class="divider"></div>
-            <span class="support-title">Support</span>
-            <span class="nav-link inactive">Micwosoft 365</span>
-            <span class="nav-link inactive">Office</span>
-            <span class="nav-link active">Products</span>
-            <span class="nav-link active">Devices</span>
-            <span class="nav-link active">Account & billing</span>
-            <span class="nav-link active">Resources</span>
-        </div>
-        <div class="nav-right">
-            <button class="btn-buy">Buy Micwosoft 365</button>
-            <span class="nav-link inactive">All Micwosoft</span>
-            <span class="nav-link inactive">Search ⌕</span>
-            <span class="nav-link inactive">Sign in 👤</span>
-        </div>
-    </header>
+    <div class="wrapper">
+        <!-- Master interface layer referencing image_9d195f.png verbatim -->
+        <img src="image_9d195f.png" alt="Microsoft Support Page" class="bg-screenshot">
 
-    <!-- WORKBENCH GRID AREA -->
-    <main class="page-container">
-        <!-- Documentation Base -->
-        <section class="content-left">
-            <h1>Troubleshooting Micwosoft unexpected restarts and stop code errors</h1>
-            <div class="applies-to">Applies To</div>
+        <!-- Custom edited logo overlay referencing image_67ef08.png verbatim -->
+        <img src="image_67ef08.png" alt="Micwosoft" class="logo-overlay">
+    </div>
 
-            <div class="tabs">
-                <div class="tab active">Windows 11</div>
-                <div class="tab inactive">Windows 10</div>
-            </div>
-
-            <p>Windows 11 might shut down or restart unexpectedly when a serious problem occurs, causing you to briefly see an error message, such as "Your device ran into a problem and needs to restart." Windows 11 will then restart automatically. This is also known as a <span class="italic-term">stop code error</span>, a <span class="italic-term">bug check</span>, a <span class="italic-term">kernel error</span>, or a <span class="italic-term">Blue Screen error</span>, or <span class="italic-term">BSOD</span>.</p>
-            
-            <p>An unexpected restart might be caused by a hardware device, its driver, or software. To help determine the cause of the problem, a stop code, such as PAGE_FAULT_IN_NONPAGED_AREA or MEMORY_MANAGEMENT will appear at the bottom of the screen, and if available, the module name of the code that was being executed at the time the problem occurred.</p>
-
-            <!-- Blue Screen Component Section -->
-            <div class="bsod-box">
-                <div class="sad-face">:(</div>
-                <div class="bsod-text">Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.</div>
-                <div class="percent">20% complete</div>
-                <div class="bsod-footer">
-                    <div class="qr-placeholder">
-                        <div class="qr-row"><div class="qr-black"></div><div class="qr-black"></div></div>
-                        <div class="qr-row"><div class="qr-black"></div><div class="qr-black"></div></div>
-                    </div>
-                    <div class="meta-text">
-                        For more information about this issue and possible fixes, visit https://www.micwosoft.com/stopcode<br><br>
-                        If you call a support person, give them this info:<br>
-                        Stop code: CRITICAL_PROCESS_DIED
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Copilot Box Integration -->
-        <aside class="copilot-sidebar">
-            <div class="copilot-header">
-                <div class="copilot-icon">Copilot</div>
-                <div style="cursor: pointer; color: #616161;">✕</div>
-            </div>
-            <div class="copilot-title">Need more help? Try Copilot</div>
-            <div class="copilot-subtitle">Click a prompt below to start a conversation:</div>
-            
-            <button class="prompt-btn">How do I troubleshoot Micwosoft restarts?</button>
-            <button class="prompt-btn">Tell me about the Windows Update Troubleshooter.</button>
-            <button class="prompt-btn">How do I troubleshoot Windows restarts?</button>
-        </aside>
-    </main>
-
-    <!-- CLEAN DIRECT MP4 MULTIMEDIA LAUNCHER CONTAINER -->
+    <!-- DIRECT MP4 MULTIMEDIA CONTROLLER CONTAINER -->
     <div id="video-container">
         <video id="rick-video" playsinline>
             <source src="https://brankonice1.github.io/videos/micwosoftprank/rickroll.mp4" type="video/mp4">
@@ -360,28 +101,28 @@
         </video>
     </div>
 
-    <!-- INTERCEPT LOGIC SCRIPT -->
+    <!-- MAIN EVENT ENGINE SCRIPT -->
     <script>
         const trap = document.getElementById('click-trap');
         const container = document.getElementById('video-container');
         const video = document.getElementById('rick-video');
 
         trap.addEventListener('click', () => {
-            // Remove interceptor and showcase container block
+            // Drop hidden barrier layer and showcase video container element
             trap.style.display = 'none';
             container.style.display = 'block';
             
-            // Execute the mp4 video file instantly from your repo folder
+            // Execute the remote video asset smoothly
             video.play().catch(err => {
-                console.log("Autoplay fallback catch handled.", err);
+                console.log("Autoplay context initialization caught.", err);
             });
 
-            // Lock application display view to native fullscreen
+            // Force browser layout view into true native fullscreen view mode
             if (container.requestFullscreen) {
                 container.requestFullscreen();
-            } else if (container.webkitRequestFullscreen) {
+            } else if (container.webkitRequestFullscreen) { /* Safari support */
                 container.webkitRequestFullscreen();
-            } else if (container.msRequestFullscreen) {
+            } else if (container.msRequestFullscreen) { /* IE11 / Edge Legacy support */
                 container.msRequestFullscreen();
             }
         });
